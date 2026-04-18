@@ -2,4 +2,4 @@
 
 Optimasi:
 * Run and Test API with Bruno
-* Upgrade with Layered Architecture (done)
+* Upgrade with Layered Architecture (still not testing running)
