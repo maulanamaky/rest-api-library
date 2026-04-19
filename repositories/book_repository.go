@@ -7,11 +7,11 @@ import (
 
 var books = []models.Book{
 	{ID: "1", Title: "Clean Code", Author: "Robert C. Martin", Quantity: 2},
-	{ID: "2", Title: "Clean Architecture", Author: "Robert C. Martin", Quantity: 1},
-	{ID: "3", Title: "The Clean Coder", Author: "Robert C. Martin", Quantity: 1},
+	{ID: "2", Title: "Clean Architecture", Author: "Robert C. Martin", Quantity: 5},
+	{ID: "3", Title: "The Maintenance Coder", Author: "Robert C. Martin", Quantity: 3},
 }
 
-func getAllBooks() []models.Book {
+func GetAllBooks() []models.Book {
 	return books
 }
 
@@ -25,7 +25,7 @@ func FindBookById(id string) (*models.Book, error) {
 	return nil, errors.New("Book not found")
 }
 
-func createBook(newBook models.Book) models.Book {
+func CreateBook(newBook models.Book) models.Book {
 	books = append(books, newBook)
 	return newBook
 }

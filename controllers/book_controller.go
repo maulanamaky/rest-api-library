@@ -2,19 +2,20 @@ package controllers
 
 import (
 	"go-api/models"
+	"go-api/services"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-func getBooks(c *gin.Context) {
-	books := services.getBook()
+func GetBooks(c *gin.Context) {
+	books := services.GetBook()
 	c.JSON(http.StatusOK, books)
 }
 
-func bookById(c *gin.Context) {
+func BookById(c *gin.Context) {
 	id := c.Param("id")
-	book, err := services.getBookById(id)
+	book, err := services.GetBookById(id)
 
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"message": "Book not found."})
@@ -24,18 +25,18 @@ func bookById(c *gin.Context) {
 	c.JSON(http.StatusOK, book)
 }
 
-func createBook(c *gin.Context) {
+func CreateBook(c *gin.Context) {
 	var newBook models.Book
 
 	if err := c.BindJSON(&newBook); err != nil {
 		return
 	}
 
-	books := services.addBook(newBook)
-	c.JSON(http.StatusCreated, newBook)
+	books := services.AddBook(newBook)
+	c.JSON(http.StatusCreated, books)
 }
 
-func checkoutBook(c *gin.Context) {
+func CheckoutBook(c *gin.Context) {
 	id, ok := c.GetQuery("id")
 
 	if !ok {
@@ -43,7 +44,7 @@ func checkoutBook(c *gin.Context) {
 		return
 	}
 
-	book, err := services.checkoutBook(id)
+	book, err := services.CheckoutBook(id)
 
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"message": "Book not found."})
@@ -53,7 +54,7 @@ func checkoutBook(c *gin.Context) {
 	c.JSON(http.StatusOK, book)
 }
 
-func returnBook(c *gin.Context) {
+func ReturnBook(c *gin.Context) {
 	id, ok := c.GetQuery("id")
 
 	if !ok {
@@ -61,7 +62,7 @@ func returnBook(c *gin.Context) {
 		return
 	}
 
-	book, err := services.returnBook(id)
+	book, err := services.ReturnBook(id)
 
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"message": "Book not found."})

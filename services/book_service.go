@@ -6,19 +6,19 @@ import (
 	"go-api/repositories"
 )
 
-func getBook() []models.Book {
-	return repositories.getAllBooks()
+func GetBook() []models.Book {
+	return repositories.GetAllBooks()
 }
 
-func getBookById(id string) (*models.Book, error) {
+func GetBookById(id string) (*models.Book, error) {
 	return repositories.FindBookById(id)
 }
 
-func addBook(book models.Book) models.Book {
-	return repositories.createBook(book)
+func AddBook(book models.Book) models.Book {
+	return repositories.CreateBook(book)
 }
 
-func checkoutBook(id string) (*models.Book, error) {
+func CheckoutBook(id string) (*models.Book, error) {
 	book, err := repositories.FindBookById(id)
 
 	if err != nil {
@@ -33,7 +33,7 @@ func checkoutBook(id string) (*models.Book, error) {
 	return book, nil
 }
 
-func returnBook(id string) (*models.Book, error) {
+func ReturnBook(id string) (*models.Book, error) {
 	book, err := repositories.FindBookById(id)
 
 	if err != nil {
