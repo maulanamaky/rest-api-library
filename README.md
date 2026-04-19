@@ -1,8 +1,10 @@
 ## Simple REST API with Go Language
 
+I get this from tutorial youtube: https://youtu.be/bj77B59nkTQ?si=5b1YNGLUc4KIX004
+
 What is this?
 
-This is simple REST API with Go Language for Library System.
+This is simple REST API with Go Language for Book Management. I created it for innovation to build with layered architecture monolith.
 
 How to run?
 
